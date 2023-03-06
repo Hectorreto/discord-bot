@@ -54,7 +54,7 @@ app.post('/', (req, res) => {
   }
 })
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   const guildIds = process.env.GUILD_IDS;
   const commands = [
     {
