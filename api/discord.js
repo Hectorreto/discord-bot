@@ -51,3 +51,18 @@ export const registerCommands = () => {
     [value.config.name, value]
   ))
 }
+
+export const updateInteraction = async (interaction, content) => {
+  const API = 'https://discord.com/api/v10'
+  const applicationId = process.env.APP_ID
+  const endpoint = `/webhooks/${applicationId}/${interaction.token}/messages/@original`
+
+  await fetch(API + endpoint, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ content })
+  })
+}

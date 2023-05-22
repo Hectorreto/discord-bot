@@ -1,6 +1,6 @@
-// import fetch from 'node-fetch'
 import { InteractionResponseType } from 'discord-interactions'
 import { createCompletion } from '../api/openai.js'
+import { updateInteraction } from '../api/discord.js'
 
 const config = {
   name: 'generar',
@@ -21,19 +21,7 @@ const command = (req, res) => {
   const promise = createCompletion(message)
 
   res.on('finish', async () => {
-    const API = 'https://discord.com/api/v10'
-    const applicationId = process.env.APP_ID
-    const endpoint = `/webhooks/${applicationId}/${interaction.token}/messages/@original`
-    const completion = await promise
-
-    await fetch(API + endpoint, {
-      method: 'PATCH',
-      headers: {
-        Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ content: completion })
-    })
+    await updateInteraction(interaction, await promise)
   })
 
   res.send({
