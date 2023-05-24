@@ -21,7 +21,8 @@ const command = (req, res) => {
   const promise = createCompletion(message)
 
   res.on('finish', async () => {
-    await updateInteraction(interaction, await promise)
+    const generatedText = await promise
+    await updateInteraction(interaction, { content: generatedText })
   })
 
   res.send({

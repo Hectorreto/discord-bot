@@ -1,7 +1,6 @@
-// import fetch from 'node-fetch'
 import { verifyKey } from 'discord-interactions'
 import generar from '../commands/generar.js'
-// import character from '../commands/character.js'
+import generarImagen from '../commands/generar-imagen.js'
 
 export const discordValidation = (req, res, buf) => {
   const signature = req.get('X-Signature-Ed25519')
@@ -17,8 +16,8 @@ export const discordValidation = (req, res, buf) => {
 
 export const registerCommands = () => {
   const commands = [
-    generar
-    // character
+    generar,
+    generarImagen
   ]
   const applicationId = process.env.APP_ID
   const guildIds = process.env.GUILD_IDS.split(' ')
@@ -52,7 +51,7 @@ export const registerCommands = () => {
   ))
 }
 
-export const updateInteraction = async (interaction, content) => {
+export const updateInteraction = async (interaction, data) => {
   const API = 'https://discord.com/api/v10'
   const applicationId = process.env.APP_ID
   const endpoint = `/webhooks/${applicationId}/${interaction.token}/messages/@original`
@@ -63,6 +62,6 @@ export const updateInteraction = async (interaction, content) => {
       Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ content })
+    body: JSON.stringify(data)
   })
 }

@@ -1,15 +1,15 @@
 import { InteractionResponseType } from 'discord-interactions'
-import { createCompletion2 } from '../api/characterai.js'
 import { updateInteraction } from '../api/discord.js'
+import { createImage } from '../api/openai.js'
 
 const config = {
-  name: 'character',
-  description: 'Hablar con Yui',
+  name: 'generar-imagen',
+  description: 'Generar imagen usando la api de ChatGpt',
   options: [
     {
       type: 3, // string
-      name: 'mensaje',
-      description: 'Mensaje a enviar a ChatGpt',
+      name: 'prompt',
+      description: 'Descripción de la imagen a generar',
       required: true
     }
   ]
@@ -18,11 +18,11 @@ const config = {
 const command = (req, res) => {
   const interaction = req.body
   const message = interaction.data.options[0].value
-  const promise = createCompletion2(message)
+  const promise = createImage(message)
 
   res.on('finish', async () => {
-    const generatedText = await promise
-    await updateInteraction(interaction, { content: generatedText })
+    const imageUrl = await promise
+    await updateInteraction(interaction, { content: imageUrl })
   })
 
   res.send({

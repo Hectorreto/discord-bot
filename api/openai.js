@@ -20,3 +20,12 @@ export const createCompletion = async (message) => {
     return JSON.stringify(error.response?.data, null, 2)
   }
 }
+
+export const createImage = async (prompt) => {
+  const response = await openai.createImage({
+    prompt,
+    n: 1,
+    size: '1024x1024'
+  })
+  return response.data.data[0].url
+}
