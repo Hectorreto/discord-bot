@@ -1,5 +1,5 @@
 import { InteractionResponseType } from 'discord-interactions'
-import { updateInteraction } from '../api/discord.js'
+import { postInteraction, updateInteraction } from '../api/discord.js'
 import { createImage } from '../api/openai.js'
 
 const config = {
@@ -22,7 +22,7 @@ const command = (req, res) => {
 
   res.on('finish', async () => {
     const imageUrl = await promise
-    await updateInteraction(interaction, { content: imageUrl })
+    await postInteraction(interaction, { content: imageUrl })
   })
 
   res.send({

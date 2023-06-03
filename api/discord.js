@@ -69,3 +69,18 @@ export const updateInteraction = async (interaction, data) => {
     body: JSON.stringify(data)
   })
 }
+
+export const postInteraction = async (interaction, data) => {
+  const API = 'https://discord.com/api/v10'
+  const applicationId = process.env.APP_ID
+  const endpoint = `/webhooks/${applicationId}/${interaction.token}`
+
+  await fetch(API + endpoint, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+}
