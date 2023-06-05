@@ -1,5 +1,5 @@
 import { InteractionResponseType } from 'discord-interactions'
-import { postInteraction, updateInteraction } from '../api/discord.js'
+import { postInteraction } from '../api/discord.js'
 import { createImage } from '../api/openai.js'
 
 const config = {

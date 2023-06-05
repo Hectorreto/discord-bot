@@ -30,4 +30,6 @@ app.post('/', (req, res) => {
   console.log('Interacción no controlada')
 })
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port: ${process.env.PORT}`)
+})
