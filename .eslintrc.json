@@ -1,0 +1,36 @@
+{
+	"env": {
+		"es2021": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"@typescript-eslint",
+		"import"
+	],
+	"rules": {
+		"indent": ["error", "tab"],
+		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "single"], 
+		"semi": ["error", "always"],
+		"comma-dangle": ["error", "always-multiline"],
+		"no-multi-spaces": ["error"],
+		"no-trailing-spaces": ["error"],
+		"space-in-parens": ["error"],
+		"spaced-comment": ["error"],
+		"no-multiple-empty-lines": ["error"],
+		"no-use-before-define": ["error"],
+		"arrow-parens": ["error"],
+		"import/order": ["error", {"newlines-between": "always"}],
+		"import/newline-after-import": ["error"]
+	},
+	"ignorePatterns": ["dist"]
+}
