@@ -42,7 +42,8 @@ type LeagueEntryDTO = {
 };
 
 const fetchSummoner = async (summonerName: string): Promise<SummonerDTO> => {
-	const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}`;
+	const region = 'la1';
+	const url = `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}`;
 	const options = { headers: { 'X-Riot-Token': RIOT_TOKEN } };
 	const response = await fetch(url, options);
 
@@ -54,7 +55,8 @@ const fetchSummoner = async (summonerName: string): Promise<SummonerDTO> => {
 };
 
 const fetchLeagueEntries = async (summonerId: string): Promise<LeagueEntryDTO[]> => {
-	const url = `https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}`;
+	const region = 'la1';
+	const url = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}`;
 	const options = { headers: { 'X-Riot-Token': RIOT_TOKEN } };
 	const response = await fetch(url, options);
 
