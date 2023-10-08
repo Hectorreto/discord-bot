@@ -4,6 +4,7 @@ import {Client, GatewayIntentBits} from 'discord.js';
 import * as pingCommand from './commands/ping.js';
 import * as pokemonCommand from './commands/pokemon.js';
 import * as riotCommand from './commands/riot.js';
+import * as preguntaCommand from './commands/generar.js';
 
 const {DISCORD_TOKEN} = process.env;
 const client = new Client({intents: [GatewayIntentBits.Guilds]});
@@ -25,6 +26,10 @@ client.on('interactionCreate', async (interaction) => {
 
 	if (interaction.commandName === 'riot') {
 		await riotCommand.execute(interaction);
+	}
+
+	if (interaction.commandName === 'generar') {
+		await preguntaCommand.execute(interaction);
 	}
 });
 

@@ -8,13 +8,14 @@
 		"start": "node .",
 		"build": "eslint src --fix && tsc",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"refresh-commands": "node src/loadCommands"
+		"load-commands": "node dist/loadCommands"
 	},
 	"author": "Hectorreto",
 	"license": "ISC",
 	"dependencies": {
 		"discord.js": "^14.13.0",
-		"dotenv": "^16.3.1"
+		"dotenv": "^16.3.1",
+		"openai": "^4.11.1"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.7.4",
