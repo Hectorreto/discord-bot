@@ -1,13 +1,13 @@
 import 'dotenv/config';
-import {REST, Routes} from 'discord.js';
+import { REST, Routes } from 'discord.js';
 
 import * as pingCommand from './commands/ping.js';
 import * as pokemonCommand from './commands/pokemon.js';
 import * as riotCommand from './commands/riot.js';
 import * as preguntaCommand from './commands/generar.js';
 
-const {DISCORD_TOKEN, DISCORD_CLIENT_ID} = process.env;
-const rest = new REST({version: '10'}).setToken(DISCORD_TOKEN);
+const { DISCORD_TOKEN, DISCORD_CLIENT_ID } = process.env;
+const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 
 const commands = [pingCommand.data, pokemonCommand.data, riotCommand.data, preguntaCommand.data];
 

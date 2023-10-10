@@ -26,10 +26,11 @@
 		"no-trailing-spaces": ["error"],
 		"space-in-parens": ["error"],
 		"spaced-comment": ["error"],
-		"no-multiple-empty-lines": ["error"],
+		"no-multiple-empty-lines": ["error", { "max": 1 }],
 		"no-use-before-define": ["error"],
 		"arrow-parens": ["error"],
-		"import/order": ["error", {"newlines-between": "always"}],
+		"object-curly-spacing": ["error", "always"],
+		"import/order": ["error", { "newlines-between": "always" }],
 		"import/newline-after-import": ["error"]
 	},
 	"ignorePatterns": ["dist"]

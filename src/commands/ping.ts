@@ -6,7 +6,13 @@ export const data = {
 };
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
-	const ping = Date.now() - interaction.createdTimestamp;
+	try {
+		const ping = Date.now() - interaction.createdTimestamp;
 
-	await interaction.reply(`🏓 Pong! Bot latency is ${ping}ms.`);
+		await interaction.reply(`🏓 Pong! Bot latency is ${ping}ms.`);
+
+	} catch(error) {
+		console.error(error);
+		await interaction.reply('😭');
+	}
 };

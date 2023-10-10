@@ -22,11 +22,10 @@ type PokemonDTO = {
 };
 
 export const execute = async (interaction: ChatInputCommandInteraction<CacheType>) => {
-	const rawName = interaction.options.getString('name');
-	const name = rawName.toLowerCase();
-	const api = `https://pokeapi.co/api/v2/pokemon/${name}`;
-
 	try {
+		const rawName = interaction.options.getString('name');
+		const name = rawName.toLowerCase();
+		const api = `https://pokeapi.co/api/v2/pokemon/${name}`;
 		await interaction.deferReply();
 		const response = await fetch(api);
 
