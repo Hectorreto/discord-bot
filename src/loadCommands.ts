@@ -9,7 +9,12 @@ import * as preguntaCommand from './commands/generar.js';
 const { DISCORD_TOKEN, DISCORD_CLIENT_ID } = process.env;
 const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 
-const commands = [pingCommand.data, pokemonCommand.data, riotCommand.data, preguntaCommand.data];
+const commands = [
+	pingCommand.data,
+	pokemonCommand.data,
+	riotCommand.data,
+	preguntaCommand.data,
+];
 
 try {
 	console.log('Started refreshing application (/) commands.');
